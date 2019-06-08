@@ -1,0 +1,401 @@
+@charset "utf-8";
+/* CSS Document */
+@import "font-awesome-sprockets";
+@import "font-awesome";
+body{
+ font-family: 'poppinsregular';
+}
+*{ 
+   margin:0px; 
+   padding:0px; 
+   box-sizing:border-box;
+   outline: none;
+}
+@font-face {
+    font-family: 'poppinsbold';
+    src: url('fonts/poppins-bold.woff2') format('woff2'),
+         url('fonts/poppins-bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'poppinslight';
+    src: url('fonts/poppins-light.woff2') format('woff2'),
+         url('fonts/poppins-light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'poppinsmedium';
+    src: url('fonts/poppins-medium.woff2') format('woff2'),
+         url('fonts/poppins-medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'poppinsregular';
+    src: url('fonts/poppins-regular.woff2') format('woff2'),
+         url('fonts/poppins-regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'poppinssemibold';
+    src: url('fonts/poppins-semibold.woff2') format('woff2'),
+         url('fonts/poppins-semibold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+p{ 
+ font-size: 16px;
+ color: #646464;
+ line-height: 24px;
+}
+a {
+    text-decoration: none;
+	font-size: 16px;
+}
+li{ 
+  list-style: none;
+}
+ul{
+   margin:0px;
+   padding-left:0px;
+   padding-right:0px;
+}
+.clear{
+ clear: both;
+}
+header.main-header {
+    float: left;
+    width: 100%;
+    position: relative;
+}
+
+
+header.main-header {
+    background: url(images/top-back-img.png);
+    background-size: cover;
+    min-height: 388px;  
+    padding: 120px 0px 60px;
+}
+header.main-header .back-button {
+    float: left;
+}
+header.main-header .back-button img {
+    max-width: 70%;
+}
+header.main-header h2 {
+    font-size: 32px;
+    font-family: 'poppinssemibold';
+    margin: 0 0 0 20px;
+    float: left;
+    width: auto;
+    line-height: 46px;
+}
+.container {
+    padding: 0 6%;
+    width: 100%;
+    display: inline-block;
+}
+.middle-sec {
+    float: left;
+    width: 100%;
+    margin-top: -150px;
+    z-index: 999;
+    position: relative;
+}
+.middle-sec-inner {
+    float: left;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.16);
+	    padding: 25px;
+}
+.coin-list {
+    float: left;
+    width: 100%;
+    text-align: center;
+}
+.coin-list h3 {
+    font-size: 28px;
+    float: left;
+    width: 100%;
+}
+.totalcoin {
+    font-size: 28px;
+    font-weight: 500;
+    float: left;
+    width: 100%;
+    line-height: 40px;
+}
+.coin-link {
+    float: left;
+    width: 100%;
+}
+.coin-link a {
+    color: #e4bd8b;
+    font-size: 22px;
+}
+.social-icon {
+    float: left;
+    width: 100%;
+    text-align: center;
+}
+.social-icon li {
+    display: inline-block;
+    margin: 0 8px;
+}
+.social-icon li a {
+    display: inline-block;
+    width: auto;
+}
+.social-icon li a img {
+    max-width: 60px;
+}
+.social-icon {
+    float: left;
+    width: 100%;
+    text-align: center;
+    margin: 12px 0 12px;
+}
+.full-umg, .full-umg img {
+    float: left;
+    width: 100%;
+}
+.panel {
+    margin-bottom: 30px;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+.panel-default>.panel-heading {
+    color: #333;
+    background-color: #f5f5f5;
+	padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+	    font-size: 20px;
+}
+.panel-body {
+    padding: 15px;
+}
+.lpc-stats {
+    float: left;
+    width: 100%;
+    margin: 20px 0 0;
+}
+.lpc-stats h2 {
+    font-size: 28px;
+    margin: 10px 0;
+}
+.panel.panel-default.gray-bg {
+    border-color: #fde6bd;
+}
+.gray-bg .panel-heading {
+    background: #fcf8e3;
+    border-color: #fde6bd;
+    color: #d19d60;
+}
+.panel.panel-default.green-bg{
+	border-color: #daeccb;
+}
+.green-bg .panel-heading {
+    background: #dff0d8;
+    border-color: #daeccb;
+    color: #477c3b;
+}
+.panel.panel-default.blue-bg{
+	border-color: #bee9f1;
+}
+.blue-bg .panel-heading {
+    background: #d9edf7;
+    border-color: #bee9f1;
+    color: #2685b2;
+}
+.panel.panel-default.red-bg{
+		border-color: #f0d8dc; 
+}
+.red-bg .panel-heading{
+	  background: #f2dede;
+    border-color: #f0d8dc;
+    color: #b64349;
+}
+
+.lpc-stats ul {
+    margin: 0 -15px;
+}
+.lpc-stats li {
+    float: left;
+    width: 50%;
+    padding: 0 15px;
+}
+.panel-body p {
+    font-size: 18px;
+    color: #000;
+    padding: 5px 0;
+    font-weight: 600;
+}
+.green {
+    color: #478743;
+}
+.price-volume {
+    float: left;
+    width: 100%;
+}
+.price-volume li {
+    font-weight: 600;
+    width: 100%;
+    float: left;
+}
+.price-volume li span {
+    font-weight: 400;
+    float: right;
+}
+.price-volume li {
+    font-weight: 600;
+    width: 100%;
+    float: left;
+    padding: 5px 0;
+    border-bottom: solid 1px #efefef;
+}
+.price-volume li span {
+    font-weight: 400;
+    float: right;
+}
+footer.main-footer {
+    float: left;
+    width: 100%;
+    text-align: center;
+}
+.footer-inner {
+    text-align: center;
+    float: left;
+    width: 100%;
+    margin: 20px 0;
+}
+.footer-inner a {
+    float: left;
+    width: 100%;
+    color: #e4bd8b;  
+}
+.footer-inner img {
+    max-width: 140px;
+}
+.coin-list img {
+    max-width: 150px;
+}
+@media (max-width: 640px){
+header.main-header {
+    min-height: 338px;
+    padding: 100px 0px 60px;
+}
+.coin-list h3 {
+    font-size: 22px;
+}	
+.totalcoin {
+    font-size: 22px;
+    line-height: 30px;
+}
+.coin-link a {
+    font-size: 20px;
+}
+.social-icon li a img {
+    max-width: 50px;
+}
+header.main-header .back-button img {
+    max-width: 60%;
+}
+header.main-header h2 {
+    font-size: 28px;
+    margin: 0 0 0 10px;
+    line-height: 38px;
+}
+.lpc-stats h2 {
+    font-size: 22px;
+}
+.panel-default>.panel-heading {
+    padding: 8px 12px;
+    font-size: 18px;
+}
+.panel-body p {
+    font-size: 16px;
+    padding: 4px 0;
+}
+}
+@media (max-width: 480px){
+header.main-header .back-button img {
+    max-width: 50%;
+}
+header.main-header h2 {
+    font-size: 26px;
+    line-height: 36px;
+}
+.coin-list h3, .totalcoin {
+    font-size: 20px;
+}
+.coin-link a {
+    font-size: 18px;
+}
+.social-icon li {
+    margin: 0 4px;
+}
+.social-icon li a img {
+    max-width: 40px;
+}
+.lpc-stats li {
+    float: left;
+    width: 100%;
+    padding: 0 15px;
+}
+.panel {
+    margin-bottom: 15px;
+}
+.footer-inner img {
+    max-width: 120px;
+}
+.coin-list img {
+    max-width: 140px;
+}
+.middle-sec-inner {
+    padding: 15px;
+}
+}
+@media (max-width: 360px){
+header.main-header {
+    min-height: 300px;
+    padding: 80px 0px 60px;
+}
+header.main-header h2 {
+    font-size: 22px;
+    line-height: 36px;
+    margin-left: 0;
+}
+.coin-list img {
+    max-width: 120px;
+}
+.coin-link a {
+    font-size: 16px;
+}	
+.social-icon li a img {
+    max-width: 32px;
+}
+.price-volume li {
+    font-size: 14px;
+}
+.footer-inner a {
+    line-height: 18px;
+}
+.panel-body p {
+    font-size: 14px;
+    padding: 2px 0;
+}
+}

@@ -1,0 +1,102 @@
+<?php
+namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Input;
+use Session;
+use Redirect;
+use Illuminate\Http\Request;
+use Auth;
+use Validator;
+use App\Coins;
+use App\Coordinate;
+use Carbon\Carbon;
+use Response; 
+use App\Distribution;
+use FroalaEditor_Image;
+use App\Http\Controllers\Controller;
+use Log;
+use AnthonyMartin\GeoLocation\GeoLocation as GeoLocation;
+class DistributionsController extends Controller
+{
+    
+    private  $added=0;
+    public function Store($lat,$lng)
+    {
+        
+        $radius =50;
+        $unit ='meter';
+        $coins =13;
+        $coin_id=Coins::inRandomOrder()->where('active',1)->get()->pluck('id')->toArray();
+
+        $coin= new Distribution;
+        $this->Distribute($radius,$unit,$coins,$lat,$lng,1,$coin_id,false,8);
+        $radius =3000;
+        $unit ='meter';
+        $coins =200;
+        $coin_id=Coins::inRandomOrder()->where('active',1)->get()->pluck('id')->toArray();
+
+        $coin= new Distribution;
+        $this->Distribute($radius,$unit,$coins,$lat,$lng,1,$coin_id,false,30);
+        return $this->added;
+    }
+    public function Distribute($radius,$unit,$coins,$lat,$lng,$dist_id,$coin_id,$update=false,$gap){
+        // 0.00001= 1.1 meter
+         // 33 meter = 0.0003 
+        $km= $unit=='meter'? $radius/1000:$radius;
+        $edison = GeoLocation::fromDegrees($lat, $lng);
+        $coordinates = $edison->boundingCoordinates($km, 'km');
+        $latMin =$coordinates[0]->getLatitudeInDegrees();
+        $latMax =$coordinates[1]->getLatitudeInDegrees();
+        $lngMin =$coordinates[0]->getLongitudeInDegrees();
+        $lngMax =$coordinates[1]->getLongitudeInDegrees();
+        $latRange = range(round($latMin,5),round($latMax,5),0.0001);
+        $lngRange = range(round($lngMin,5),round($lngMax,5),0.0001);
+        shuffle($latRange);
+        shuffle($lngRange);
+        if(sizeof($latRange)>0):
+            foreach ($latRange as $key=>$l):
+                if($key<$coins):
+                    $this->k=$key;
+                    $thisLat =$l;
+                    $thisLng =$lngRange[array_rand($lngRange)];
+                   
+                    if($this->SameCoinInMyRadius($thisLat,$thisLng,$gap,$coin_id)):
+                        $d= new Coordinate;
+                        $d->coin_id =$coin_id[array_rand($coin_id)];;
+                        //$d->coin_id =$coin_id;
+                        $d->dist_id= $dist_id;
+                        $d->lat=$thisLat;
+                        $d->lng =$thisLng;
+                        $d->new =true;
+                        $d->used=false;
+                        $d->save();
+                        $this->added++;
+                        
+                        Log::emergency('addingnewcoinsfornewuser'.Auth::id().' @thisLat='.$thisLat.' thisLng='.$thisLng);
+                        
+                    endif;    
+                endif;
+            endforeach;
+        endif;
+
+    }
+    public function SameCoinInMyRadius($lat,$lng,$radius,$coin_id){       
+		$edison = GeoLocation::fromDegrees($lat,$lng);
+		$coordinates = $edison->boundingCoordinates(($radius/1000), 'kilometers');
+        $latMin =$coordinates[0]->getLatitudeInDegrees();
+        $latMax =$coordinates[1]->getLatitudeInDegrees();
+        $lngMin =$coordinates[0]->getLongitudeInDegrees();
+        $lngMax =$coordinates[1]->getLongitudeInDegrees();
+		$activeCoins= Coins::where('active',1)->pluck('id');
+        $coinArroundMe =Coordinate::
+            whereBetween('lat', [$latMin, $latMax])
+            ->whereBetween('lng', [$lngMin, $lngMax])
+            //->where('coin_id', $coin_id)
+            ->where('used',false)->get()->count();
+        if($coinArroundMe>0):
+            return false;
+        else:
+            return true;
+        endif;
+    }
+
+}
